@@ -1,0 +1,17 @@
+<div [ngClass]="'expense-edit'">
+  <div [ngClass]="'expense-item'">
+    <div>
+      <h3>{{ expense.category | titlecase }}</h3>
+    </div>
+    <div>
+      <p [ngClass]="expense.type === 'expense' ? 'exp' : 'inc'">
+        {{ expense.amount | currency : "INR" : "symbol" : "1.0-0" }}
+      </p>
+      <h5>{{ expense.date | date : "mediumDate" }}</h5>
+    </div>
+  </div>
+  <div [ngClass]="'btn'">
+    <button [ngClass]="'delete'" (click)="onDeleteExp(expense)">Del</button>
+    <button [ngClass]="'edit'" (click)="setExpenseToEdit(expense)">Edit</button>
+  </div>
+</div>

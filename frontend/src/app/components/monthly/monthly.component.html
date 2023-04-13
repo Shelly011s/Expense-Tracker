@@ -1,0 +1,28 @@
+<!-- <p>monthly works!</p> -->
+<div [ngClass]="'container'">
+  <div [ngClass]="'total'">
+    <h1 [ngStyle]="{ color: '#52e6a8' }">Income</h1>
+    <h5>{{ income | currency : "INR" : "symbol" : "1.0-0" }}</h5>
+    <h2 [ngStyle]="{ color: '#e65252' }">Expenses</h2>
+    <h5>{{ expense | currency : "INR" : "symbol" : "1.0-0" }}</h5>
+  </div>
+  <!-- {{showModal}} -->
+  <app-expense
+    *ngFor="let exp of expenses"
+    [expense]="exp"
+    (setEdit)="setEdit($event)"
+    (onDelete)="deleteExpense($event)"
+  >
+  </app-expense>
+</div>
+<div [ngClass]="'nav-button'">
+  <button [ngClass]="'add-button'" (click)="setAddModal()">+</button>
+</div>
+
+<app-add-expense
+  *ngIf="showModal"
+  [doAdd]="doAdd"
+  (onEditExpense)="editExpense($event)"
+  (onAddExpense)="addExpense($event)"
+  [expense]="expenseToEdit"
+></app-add-expense>

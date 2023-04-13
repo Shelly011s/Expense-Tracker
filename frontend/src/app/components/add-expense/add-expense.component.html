@@ -1,0 +1,37 @@
+<div [ngClass]="'add-new'">
+    <!-- <div class="load">
+      <span class="loader">
+        <span class="loader-inner"></span>
+      </span>
+    </div> -->
+    <form [formGroup]="expenseForm" id="form1" (ngSubmit)="onSubmit()">
+      <select formControlName="expenseType">
+        <option value="">Select expense type</option>
+        <option value="expense">Expense</option>
+        <option value="income">Income</option>
+      </select>
+      <br>
+      <br>
+      <input type='text' formControlName="category" placeholder='Category of the Expense/Income' />
+      <br>
+      <!-- <br>
+      <input type='date' formControlName="date" id="date1" value="" />
+      <br> -->
+      <br>
+      <input type='number' formControlName="amount" placeholder='&#8377;Enter Amount' />
+      <br>
+      <br>
+      <div [ngClass]="'flex'">
+        <button *ngIf="doAdd" button type="submit" class="buttonFlat">
+            ADD
+          </button>
+          <button *ngIf="!doAdd" button type="submit" class="buttonFlat">
+            EDIT
+          </button>
+          <button type="button" class="buttonFlat" (click)="closeModal()">
+            CANCEL
+          </button>
+      </div>
+      
+    </form>
+</div>
